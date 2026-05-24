@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{% if title %}{{ title }} — {% endif %}developmentalamnesia.com</title>
+<style>
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 4rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+               Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  line-height: 1.6;
+  color: #2d3748;
+  background: #ffffff;
+  font-size: 17px;
+}
+@media (min-width: 768px) {
+  body { font-size: 18px; padding-top: 3rem; }
+}
+nav.site-nav {
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 1rem;
+  margin-bottom: 2rem;
+  font-size: 0.95rem;
+}
+nav.site-nav a {
+  color: #4a5568;
+  text-decoration: none;
+  margin-right: 1rem;
+}
+nav.site-nav a:hover { color: #1a4480; }
+header.paper-meta {
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+header.paper-meta h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1.25;
+  margin: 0 0 0.75rem;
+  color: #1a202c;
+}
+@media (min-width: 768px) {
+  header.paper-meta h1 { font-size: 2.2rem; }
+}
+header.paper-meta .summary {
+  color: #4a5568;
+  font-style: italic;
+  line-height: 1.5;
+  margin: 0.5rem 0 1rem;
+}
+header.paper-meta .meta-line {
+  color: #718096;
+  font-size: 0.875rem;
+  margin: 0.25rem 0;
+}
+header.paper-meta .tags { margin-top: 0.75rem; }
+header.paper-meta .tag {
+  display: inline-block;
+  background: #edf2f7;
+  color: #4a5568;
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  margin: 0.2rem 0.3rem 0.2rem 0;
+}
+article h1 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin: 2.5rem 0 1rem;
+  color: #1a4480;
+  line-height: 1.3;
+}
+@media (min-width: 768px) {
+  article h1 { font-size: 1.55rem; }
+}
+article h2 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 2rem 0 0.75rem;
+  color: #2c5282;
+}
+article p { margin: 0 0 1.1rem; }
+article em { color: #4a5568; }
+article strong { color: #1a202c; }
+article a {
+  color: #2b6cb0;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+article a:hover { color: #1a4480; }
+article table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  font-size: 0.92rem;
+  overflow-x: auto;
+  display: block;
+}
+@media (min-width: 768px) {
+  article table { display: table; font-size: 0.95rem; }
+}
+article th, article td {
+  border: 1px solid #cbd5e0;
+  padding: 0.5rem 0.7rem;
+  vertical-align: top;
+  text-align: left;
+}
+article th {
+  background: #e8eef5;
+  color: #1a4480;
+  font-weight: 700;
+}
+article tr:nth-child(even) td { background: #f7fafc; }
+article ul, article ol {
+  margin: 0 0 1.1rem;
+  padding-left: 1.5rem;
+}
+article li { margin-bottom: 0.3rem; }
+footer.site-foot {
+  border-top: 1px solid #e2e8f0;
+  padding-top: 1rem;
+  margin-top: 3rem;
+  color: #718096;
+  font-size: 0.85rem;
+}
+footer.site-foot a { color: #4a5568; }
+.paper-list { list-style: none; padding: 0; }
+.paper-list li {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #edf2f7;
+}
+.paper-list li:last-child { border-bottom: none; }
+.paper-list .paper-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1a4480;
+  text-decoration: none;
+}
+.paper-list .paper-title:hover { text-decoration: underline; }
+.paper-list .paper-date {
+  color: #718096;
+  font-size: 0.85rem;
+  margin: 0.2rem 0 0.5rem;
+}
+.paper-list .paper-summary {
+  color: #4a5568;
+  font-size: 0.95rem;
+  font-style: italic;
+}
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href="/">Home</a>
+  <a href="/about/">About</a>
+</nav>
+
+{% if title and not isHome %}
+<header class="paper-meta">
+  <h1>{{ title }}</h1>
+  {% if summary %}<p class="summary">{{ summary }}</p>{% endif %}
+  {% if date %}<p class="meta-line"><strong>Date:</strong> {{ date | readableDate }}</p>{% endif %}
+  {% if author %}<p class="meta-line"><strong>Author:</strong> {{ author }}</p>{% endif %}
+  {% if tags %}<p class="tags">{% for tag in tags %}<span class="tag">{{ tag }}</span>{% endfor %}</p>{% endif %}
+</header>
+{% endif %}
+
+<article>
+{{ content | safe }}
+</article>
+
+<footer class="site-foot">
+  <p>developmentalamnesia.com — collected writings by Wayne Sanderson.<br>
+  Published under <a href="https://creativecommons.org/publicdomain/zero/1.0/">Creative Commons CC0 1.0 (public domain dedication)</a>.</p>
+</footer>
+
+</body>
+</html>

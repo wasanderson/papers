@@ -1,0 +1,24 @@
+{
+  "name": "papers",
+  "version": "1.0.0",
+  "description": "First commit from GitHub Desktop on D drive — May 23, 2026.\r Wayne",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wasanderson/papers.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/wasanderson/papers/issues"
+  },
+  "homepage": "https://github.com/wasanderson/papers#readme",
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.5"
+  }
+}
